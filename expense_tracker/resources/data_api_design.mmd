@@ -1,0 +1,74 @@
+classDiagram
+    class Expense{
+        +int id
+        +float amount
+        +str category
+        +str description
+        +date date
+        +str account
+    }
+    class ExpenseSerializer{
+        +int id
+        +float amount
+        +str category
+        +str description
+        +date date
+        +str account
+    }
+    class ExpenseList{
+        +List[Expense] expenses
+        +add_expense(expense: Expense): None
+        +delete_expense(expense_id: int): None
+        +get_expenses(): List[Expense]
+    }
+    class ExpenseForm{
+        +float amount
+        +str category
+        +str description
+        +date date
+        +str account
+        +submit_form(): None
+    }
+    class Calendar{
+        +List[Expense] expenses
+        +click_day(date: date): None
+    }
+    class Visualizations{
+        +List[Expense] expenses
+        +generate_visualizations(): None
+    }
+    class Insights{
+        +List[Expense] expenses
+        +generate_insights(): None
+    }
+    class ExportButton{
+        +List[Expense] expenses
+        +export_expenses(): None
+    }
+    class ImportButton{
+        +List[Expense] expenses
+        +import_expenses(file_path: str): None
+    }
+    class ExpenseAPI{
+        +get_expenses(): List[Expense]
+        +create_expense(expense: Expense): Expense
+        +delete_expense(expense_id: int): None
+    }
+    class ExpenseViewSet{
+        +get_queryset(): List[Expense]
+        +create(request): Expense
+        +destroy(request, pk: int): None
+    }
+    class urls{
+        +urlpatterns: List[str]
+    }
+    ExpenseList "1" -- "1" Expense: has
+    ExpenseForm "1" -- "1" Expense: has
+    Calendar "1" -- "1" Expense: has
+    Visualizations "1" -- "1" Expense: has
+    Insights "1" -- "1" Expense: has
+    ExportButton "1" -- "1" Expense: has
+    ImportButton "1" -- "1" Expense: has
+    ExpenseAPI "1" -- "1" ExpenseViewSet: has
+    urls "1" -- "1" ExpenseAPI: has
+]

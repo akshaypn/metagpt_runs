@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant M as Main
+    participant G as Game
+    participant R as Room
+    participant O as Object
+    participant P as Puzzle
+    participant D as Database
+    participant U as Utils
+
+    M->>G: start_game()
+    G->>R: add_object(O)
+    G->>R: add_object(P)
+    G->>D: save_game_state(game_state)
+    G->>D: load_game_state()
+    G->>U: get_random_number(min_value, max_value)
+    G->>G: end_game()
+    G->>G: save_game()
+    G->>G: load_game()
