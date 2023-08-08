@@ -1,0 +1,39 @@
+sequenceDiagram
+    participant M as Main
+    participant G as Game
+    participant C as CLI
+    participant A as ASCIIArt
+    participant U as Utils
+    M->>G: Create game instance
+    M->>C: Create CLI instance with game
+    M->>C: Start CLI
+    C->>C: Print welcome message
+    C->>C: Print instructions
+    C->>C: Get user input
+    C->>G: Start game
+    G->>C: Print current hand
+    G->>C: Print dealer hand
+    C->>C: Get user input
+    C->>G: Place bet
+    G->>C: Print current hand
+    G->>C: Print dealer hand
+    G->>G: Deal initial cards
+    G->>C: Print current hand
+    G->>C: Print dealer hand
+    C->>C: Get user input
+    C->>G: Player hit
+    G->>C: Print current hand
+    G->>C: Print dealer hand
+    C->>C: Get user input
+    C->>G: Player stand
+    G->>C: Print current hand
+    G->>C: Print dealer hand
+    G->>G: Dealer hit
+    G->>C: Print current hand
+    G->>C: Print dealer hand
+    G->>G: Determine winner
+    G->>C: Print outcome
+    G->>C: Print total winnings
+    C->>C: Get user input
+    C->>G: End game
+    C->>C: Print quit message

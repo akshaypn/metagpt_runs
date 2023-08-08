@@ -1,0 +1,41 @@
+classDiagram
+    class Game{
+        +start_game() -> None
+        +end_game() -> None
+        +save_game() -> None
+        +load_game() -> None
+    }
+
+    class Room{
+        +__init__(name: str, description: str) -> None
+        +add_object(obj: Object) -> None
+        +remove_object(obj: Object) -> None
+        +get_objects() -> List[Object]
+        +get_object(name: str) -> Optional[Object]
+    }
+
+    class Object{
+        +__init__(name: str, description: str) -> None
+        +interact() -> None
+    }
+
+    class Puzzle{
+        +__init__(question: str, answer: str) -> None
+        +solve(answer: str) -> bool
+    }
+
+    class Database{
+        +__init__(db_file: str) -> None
+        +save_game_state(game_state: dict) -> None
+        +load_game_state() -> dict
+    }
+
+    class Utils{
+        +get_random_number(min_value: int, max_value: int) -> int
+    }
+
+    Game "1" -- "1" Room: has
+    Room "1" -- "*" Object: contains
+    Room "1" -- "*" Puzzle: contains
+    Game "1" -- "1" Database: uses
+    Game "1" -- "1" Utils: uses
